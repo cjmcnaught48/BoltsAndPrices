@@ -1,0 +1,46 @@
+﻿<Window x:Class="BoltsAndPrices.Ui.Wpf.InvoiceIndexWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoltsAndPrices.Ui.Wpf"
+        DataContext="{Binding InvoiceIndexViewModel, Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Title="InvoiceIndexWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="293*"/>
+            <ColumnDefinition Width="103*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" MinHeight="40" />
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Invoices}" SelectedItem="{Binding SelectedInvoice}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="2">
+                        <Grid.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DataContext.ShowInvoiceCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                        </Grid.InputBindings>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="100" Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding InvoiceCode}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Button Margin="4"  Content="Add" Command="{Binding AddInvoiceCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>

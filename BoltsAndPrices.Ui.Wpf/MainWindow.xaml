@@ -1,0 +1,24 @@
+﻿<Window x:Class="BoltsAndPrices.Ui.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoltsAndPrices.Ui.Wpf"
+        DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Button Margin="5" Width="200" Height="200" Command="{Binding OpenInventoryCommand}">Items</Button>
+            <Button Margin="5" Width="200" Height="200" Command="{Binding OpenInvoiceIndexCommand}">Invoices</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>
