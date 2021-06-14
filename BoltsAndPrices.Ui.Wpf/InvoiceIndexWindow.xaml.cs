@@ -29,12 +29,18 @@ namespace BoltsAndPrices.Ui.Wpf
     /// </summary>
     public partial class InvoiceIndexWindow : Window
     {
+        private static bool _isRegistered;
+
         public InvoiceIndexWindow()
         {
             InitializeComponent();
 
-            Messenger.Default.Register<OpenInvoiceMessage>(this, OpenInvoiceMessageReceived);
-            Messenger.Default.Register<AddInvoiceMessage>(this, AddInvoiceMessageReceived);
+            if (!_isRegistered)
+            {
+                Messenger.Default.Register<OpenInvoiceMessage>(this, OpenInvoiceMessageReceived);
+                Messenger.Default.Register<AddInvoiceMessage>(this, AddInvoiceMessageReceived);
+            }
+            _isRegistered = true;
 
         }
 
@@ -57,7 +63,5 @@ namespace BoltsAndPrices.Ui.Wpf
 
             view2.Show();
         }
-
-
     }
 }
