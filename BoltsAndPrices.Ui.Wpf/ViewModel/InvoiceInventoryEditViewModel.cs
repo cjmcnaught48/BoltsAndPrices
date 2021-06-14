@@ -1,11 +1,27 @@
 ﻿using BoltsAndPrices.Infrastructure.Models;
 using GalaSoft.MvvmLight;
+using BoltsAndPrices.Data.Repositories;
+using System.Collections.ObjectModel;
 
 namespace BoltsAndPrices.Ui.Wpf.ViewModel
 {
     public class InvoiceInventoryEditViewModel : ViewModelBase, IInvoiceInventoryModel
     {
-        public InvoiceInventoryEditViewModel()
+        private ObservableCollection<InventorySelectModel> _inventories;
+        public ObservableCollection<InventorySelectModel> Inventories
+        {
+            get
+            {
+                return _inventories;
+            }
+            set
+            {
+                _inventories = value;
+                this.RaisePropertyChanged(() => this.Inventories);
+            }
+        }
+
+        public InvoiceInventoryEditViewModel(IUnitOfWorkFactory unitOfWorkFactory)
         {
         }
 
@@ -23,17 +39,26 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
             }
         }
 
-        private int _inventoryId;
         public int InventoryId
         {
             get
             {
-                return _inventoryId;
+                return Inventory.InventoryId;
+            }
+        }
+
+        private InventorySelectModel _inventory;
+        public InventorySelectModel Inventory
+        {
+            get
+            {
+                return _inventory;
             }
             set
             {
-                _inventoryId = value;
-                this.RaisePropertyChanged(() => this.InventoryId);
+                _inventory = value;
+                UnitPrice = _inventory.Price;
+                this.RaisePropertyChanged(() => this.Inventory);
             }
         }
 
@@ -48,6 +73,8 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
             {
                 _quantity = value;
                 this.RaisePropertyChanged(() => this.Quantity);
+
+                LineTotal = Quantity * UnitPrice;
             }
         }
 
@@ -62,6 +89,8 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
             {
                 _unitPrice = value;
                 this.RaisePropertyChanged(() => this.UnitPrice);
+
+                LineTotal = Quantity * UnitPrice;
             }
         }
 

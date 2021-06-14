@@ -73,7 +73,7 @@ namespace BoltsAndPrices.Infrastructure.Services
             invoice.AccountName = invoiceModel.AccountName;
 
             var added = invoiceModel.InvoiceInventories
-                .Where(i => i.InvoiceInventoryId == null).ToList();
+                .Where(i => i.InvoiceInventoryId == null || i.InvoiceInventoryId == 0).ToList();
 
             var deleted = invoice.InvoiceInventories
                 .Where(i => !invoiceModel.InvoiceInventories.Any(j => j.InvoiceInventoryId == i.InvoiceInventoryId)).ToList();

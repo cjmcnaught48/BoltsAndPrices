@@ -55,6 +55,20 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
 
         public IEnumerable<IInvoiceInventoryModel> InvoiceInventories => InvoiceInventoryModels;
 
+        private InvoiceInventoryEditViewModel _invoiceInventoryEditViewModel;
+        public InvoiceInventoryEditViewModel SelectedInvoiceInventory
+        {
+            get
+            {
+                return _invoiceInventoryEditViewModel;
+            }
+            set
+            {
+                _invoiceInventoryEditViewModel = value;
+                this.RaisePropertyChanged(() => this.SelectedInvoiceInventory);
+            }
+        }
+
         private ObservableCollection<InvoiceInventoryEditViewModel> _invoiceInventoryModels;
         public ObservableCollection<InvoiceInventoryEditViewModel> InvoiceInventoryModels
         {
@@ -72,6 +86,17 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
         public RelayCommand SaveInvoiceCommand => new RelayCommand(() =>
         {
             SaveInvoice();
+        });
+
+        //
+        public RelayCommand NewInvoiceInventoryCommand => new RelayCommand(() =>
+        {
+            InvoiceInventoryModels.Add(new InvoiceInventoryEditViewModelBuilder(_unitOfWorkFactory).Build( 
+                new InvoiceInventory()
+                {
+                    Inventory = new Inventory()
+                }
+                ));
         });
 
         private string _statusDescription;

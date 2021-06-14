@@ -104,6 +104,7 @@
     <Compile Include="ViewModel\InventoryEditViewModel.cs" />
     <Compile Include="ViewModel\InventoryEditViewModelBuilder.cs" />
     <Compile Include="ViewModel\InventoryIndexViewModel.cs" />
+    <Compile Include="ViewModel\InventorySelectModel.cs" />
     <Compile Include="ViewModel\InvoiceEditViewModel.cs" />
     <Compile Include="ViewModel\InvoiceEditViewModelBuilder.cs" />
     <Compile Include="ViewModel\InvoiceIndexViewModel.cs" />

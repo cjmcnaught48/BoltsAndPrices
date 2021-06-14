@@ -1,5 +1,4 @@
-﻿using BoltsAndPrices.Data.Domain;
-using BoltsAndPrices.Data.Repositories;
+﻿using BoltsAndPrices.Data.Repositories;
 using BoltsAndPrices.Infrastructure.Models;
 using BoltsAndPrices.Infrastructure.Services;
 using GalaSoft.MvvmLight;
@@ -8,9 +7,6 @@ using System;
 
 namespace BoltsAndPrices.Ui.Wpf.ViewModel
 {
-
-
-
     public class InventoryEditViewModel : ViewModelBase, IInventoryModel
     {
         private IUnitOfWorkFactory _unitOfWorkFactory;

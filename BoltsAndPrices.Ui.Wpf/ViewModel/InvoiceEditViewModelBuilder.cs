@@ -10,7 +10,7 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
         public InvoiceEditViewModelBuilder(IUnitOfWorkFactory unitOfWorkFactory)
         {
             _unitOfWorkFactory = unitOfWorkFactory;
-            _invoiceInventoryEditViewModelBuilder = new InvoiceInventoryEditViewModelBuilder();
+            _invoiceInventoryEditViewModelBuilder = new InvoiceInventoryEditViewModelBuilder(unitOfWorkFactory);
         }
 
         public InvoiceEditViewModel Build()

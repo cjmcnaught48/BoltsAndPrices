@@ -16,6 +16,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0">Code</Label>
         <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Text="{Binding InvoiceCode}"></TextBox>
@@ -35,18 +36,40 @@
             
             <ListView.View>
                 <GridView>
-                    <GridViewColumn HeaderTemplate="{StaticResource Quantity}" HeaderContainerStyle="{StaticResource HeaderStyle}" DisplayMemberBinding="{Binding Path=InvoiceInventoryId}" Header="Inventory Id" Width="100"></GridViewColumn>
+                    <GridViewColumn HeaderTemplate="{StaticResource Quantity}" HeaderContainerStyle="{StaticResource HeaderStyle}" DisplayMemberBinding="{Binding Path=Inventory.InventoryCode}" Header="Inventory Id" Width="100"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Quantity}" Header="Quantity" Width="100"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=UnitPrice}" Header="Unit Price" Width="100"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=LineTotal}" Header="Total" Width="100"></GridViewColumn>
-                    
                 </GridView>
             </ListView.View>
         </ListView>
         
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="350*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0">Inventory</Label>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="2" Orientation="Vertical">
+                <ComboBox Grid.Row="0" Grid.Column="1" Margin="2" ItemsSource="{Binding Path=SelectedInvoiceInventory.Inventories}" SelectedItem="{Binding SelectedInvoiceInventory.Inventory}"  DisplayMemberPath="InventoryCode"></ComboBox>
+            </StackPanel>
+            <Label Grid.Row="1" Grid.Column="0">Quantity</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding SelectedInvoiceInventory.Quantity}"></TextBox>
+            <Label Grid.Row="2" Grid.Column="0">Unit Price</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Text="{Binding SelectedInvoiceInventory.UnitPrice}"></TextBox>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="2" Command="{Binding NewInvoiceInventoryCommand}">New</Button>
+            </StackPanel>
+        </Grid>       
         
-        
-        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Margin="2" Command="{Binding SaveInvoiceCommand}">Save</Button>
             <Button Margin="2">Close</Button>
         </StackPanel>
