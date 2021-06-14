@@ -28,6 +28,7 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
                 var model = new InvoiceEditViewModel(_unitOfWorkFactory);
 
                 model.InvoiceCode = invoice.InvoiceCode;
+                model.AccountName = invoice.AccountName;
                 model.InvoiceId = invoice.InvoiceId;
 
                 foreach (var invoiceInventory in invoice.InvoiceInventories)

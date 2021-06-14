@@ -15,8 +15,11 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
 {
     public class InvoiceEditViewModel : ViewModelBase, IInvoiceModel
     {
+        private IUnitOfWorkFactory _unitOfWorkFactory;
+
         public InvoiceEditViewModel(IUnitOfWorkFactory unitOfWorkFactory)
         {
+            _unitOfWorkFactory = unitOfWorkFactory;
             InvoiceInventoryModels = new ObservableCollection<InvoiceInventoryEditViewModel>();
         }
 
@@ -66,5 +69,46 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
             }
         }
 
+        public RelayCommand SaveInvoiceCommand => new RelayCommand(() =>
+        {
+            SaveInvoice();
+        });
+
+        private string _statusDescription;
+        public string StatusDescription
+        {
+            get
+            {
+                return _statusDescription;
+            }
+            set
+            {
+                _statusDescription = value;
+                this.RaisePropertyChanged(() => this.StatusDescription);
+            }
+        }
+        public bool Status { get; set; }
+
+        public void SaveInvoice()
+        {
+            StatusDescription = string.Empty;
+
+            using (var unitOfWork = _unitOfWorkFactory.Create())
+            {
+                try
+                {
+                    new InvoiceService(unitOfWork).AddOrUpdate(this);
+
+                    Status = true;
+                    StatusDescription = "Saved.";
+
+                }
+                catch (Exception e)
+                {
+                    Status = false;
+                    StatusDescription = "An Error Occurred trying to save changes.";
+                }
+            }
+        }
     }
 }

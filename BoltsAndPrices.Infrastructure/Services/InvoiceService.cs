@@ -29,6 +29,8 @@ namespace BoltsAndPrices.Infrastructure.Services
             {
                 Add(invoiceModel);
             }
+
+            _unitOfWork.Save();
         }
 
         private void Add(IInvoiceModel invoiceModel)
