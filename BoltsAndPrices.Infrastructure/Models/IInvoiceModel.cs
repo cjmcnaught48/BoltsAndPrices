@@ -9,6 +9,7 @@ namespace BoltsAndPrices.Infrastructure.Models
     {
         int? InvoiceId { get; }
         string InvoiceCode { get; }
+        string AccountName { get; }
         IEnumerable<IInvoiceInventoryModel> InvoiceInventories { get;  }
     }
 

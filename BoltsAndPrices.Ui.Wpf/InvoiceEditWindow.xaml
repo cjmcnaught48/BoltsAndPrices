@@ -15,12 +15,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0">Code</Label>
         <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Text="{Binding InvoiceCode}"></TextBox>
+        <Label Grid.Row="1" Grid.Column="0">Account Name</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Text="{Binding AccountName}"></TextBox>
 
-
-        <ListView ItemsSource="{Binding InvoiceInventoryModels}" SelectedItem="{Binding SelectedInvoiceInventory}" Grid.Row="1" Grid.ColumnSpan="2">
+        <ListView ItemsSource="{Binding InvoiceInventoryModels}" SelectedItem="{Binding SelectedInvoiceInventory}" Grid.Row="2" Grid.ColumnSpan="2">
 
             <ListView.Resources>
                 <DataTemplate x:Key="Quantity">
@@ -44,9 +46,9 @@
         
         
         
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Grid.Row="2" Grid.Column="2" Margin="2" Command="{Binding SaveInvoiceCommand}">Save</Button>
-            <Button Grid.Row="2" Grid.Column="2" Margin="2">Close</Button>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="2" Command="{Binding SaveInvoiceCommand}">Save</Button>
+            <Button Margin="2">Close</Button>
         </StackPanel>
     </Grid>
 </Window>

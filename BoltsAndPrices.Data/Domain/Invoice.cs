@@ -15,6 +15,8 @@ namespace BoltsAndPrices.Data.Domain
 
         public string InvoiceCode { get; set; }
 
+        public string AccountName { get; set; }
+
         public virtual ICollection<InvoiceInventory> InvoiceInventories { get; set; }
 
     }

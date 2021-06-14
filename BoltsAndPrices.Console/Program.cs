@@ -17,6 +17,7 @@ namespace BoltsAndPrices.Console
         public int? InvoiceId { get; set; }
 
         public string InvoiceCode { get; set; }
+        public string AccountName { get; set; }
 
         public IEnumerable<IInvoiceInventoryModel> InvoiceInventories { get { return this.invoiceInventories; } }
 

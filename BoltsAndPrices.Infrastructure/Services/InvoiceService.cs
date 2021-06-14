@@ -36,6 +36,7 @@ namespace BoltsAndPrices.Infrastructure.Services
             var invoice = new Invoice();
 
             invoice.InvoiceCode = invoiceModel.InvoiceCode;
+            invoice.AccountName = invoiceModel.AccountName;
 
             foreach(var invoiceInventoryModel in invoiceModel.InvoiceInventories)
             {
@@ -67,6 +68,7 @@ namespace BoltsAndPrices.Infrastructure.Services
             }
 
             invoice.InvoiceCode = invoiceModel.InvoiceCode;
+            invoice.AccountName = invoiceModel.AccountName;
 
             var added = invoiceModel.InvoiceInventories
                 .Where(i => i.InvoiceInventoryId == null).ToList();

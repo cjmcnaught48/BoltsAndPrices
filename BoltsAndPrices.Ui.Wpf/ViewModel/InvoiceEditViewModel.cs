@@ -36,6 +36,20 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
             }
         }
 
+        private string _accountName;
+        public string AccountName
+        {
+            get
+            {
+                return _accountName;
+            }
+            set
+            {
+                _accountName = value;
+                this.RaisePropertyChanged(() => this.AccountName);
+            }
+        }
+
         public IEnumerable<IInvoiceInventoryModel> InvoiceInventories => InvoiceInventoryModels;
 
         private ObservableCollection<InvoiceInventoryEditViewModel> _invoiceInventoryModels;
