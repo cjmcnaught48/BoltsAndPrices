@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace BoltsAndPrices.Data.Domain
 {
@@ -15,9 +16,9 @@ namespace BoltsAndPrices.Data.Domain
         public BoltsAndPricesContext() :
             base(new SQLiteConnection()
             {
-                ConnectionString = new SQLiteConnectionStringBuilder() 
-                { 
-                    DataSource = "C:\\BoltsAndPrices\\BoltsAndPrices.Data\\BoltsAndPrices.sqlite", 
+                ConnectionString = new SQLiteConnectionStringBuilder()
+                {
+                    DataSource = ConfigurationManager.AppSettings["DatabasePath"], //"C:\\BoltsAndPrices\\BoltsAndPrices.Data\\BoltsAndPrices.sqlite", 
                     ForeignKeys = true 
                 }.ConnectionString
             }, true)
