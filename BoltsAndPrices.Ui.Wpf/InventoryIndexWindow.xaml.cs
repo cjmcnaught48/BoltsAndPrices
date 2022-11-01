@@ -29,12 +29,19 @@ namespace BoltsAndPrices.Ui.Wpf
     /// </summary>
     public partial class InventoryIndexWindow : Window
     {
+        private static bool _isregistered = false;
+
+
         public InventoryIndexWindow()
         {
             InitializeComponent();
-            Messenger.Default.Register<OpenInventoryMessage>(this, OpenBoltMessageReceived);
-            Messenger.Default.Register<AddInventoryMessage>(this, AddInventoryMessageReceived);
 
+            if(!_isregistered)
+            {
+                Messenger.Default.Register<OpenInventoryMessage>(this, OpenBoltMessageReceived);
+                Messenger.Default.Register<AddInventoryMessage>(this, AddInventoryMessageReceived);
+                _isregistered = true;
+            }
         }
 
         protected override void OnActivated(EventArgs e)
