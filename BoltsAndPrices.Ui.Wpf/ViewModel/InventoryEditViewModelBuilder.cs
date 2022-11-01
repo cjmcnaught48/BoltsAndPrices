@@ -21,6 +21,7 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
         {
             var model = new InventoryEditViewModel(_unitOfWorkFactory);
 
+            model.InventoryId = inventory.InventoryId;
             model.InventoryCode = inventory.InventoryCode;
             model.Price = inventory.Price;
 
