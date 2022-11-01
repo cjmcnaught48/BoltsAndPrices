@@ -5,10 +5,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
 using GalaSoft.MvvmLight.Messaging;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using BoltsAndPrices.Data.Domain;
-using System.Linq;
 using BoltsAndPrices.Ui.Wpf.Messages;
 
 namespace BoltsAndPrices.Ui.Wpf.ViewModel
