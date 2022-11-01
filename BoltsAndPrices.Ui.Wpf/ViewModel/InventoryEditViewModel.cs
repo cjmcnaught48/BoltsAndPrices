@@ -4,6 +4,12 @@ using BoltsAndPrices.Infrastructure.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
+using GalaSoft.MvvmLight.Messaging;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using BoltsAndPrices.Data.Domain;
+using System.Linq;
+using BoltsAndPrices.Ui.Wpf.Messages;
 
 namespace BoltsAndPrices.Ui.Wpf.ViewModel
 {
@@ -78,6 +84,8 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
 
                     Status = true;
                     StatusDescription = "Saved.";
+
+                    Messenger.Default.Send(new InventoryUpdatedMessage());
 
                 }
                 catch (Exception e)

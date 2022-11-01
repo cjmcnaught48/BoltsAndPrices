@@ -35,7 +35,16 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Inventories = new ObservableCollection<Inventory>(GetInventory());
+
+            Messenger.Default.Register<InventoryUpdatedMessage>(this, InventoryUpdated);
+
         }
+        
+        private void InventoryUpdated(InventoryUpdatedMessage message)
+        {
+            Inventories = new ObservableCollection<Inventory>(GetInventory(SearchTerm));
+        }
+
 
         private ObservableCollection<Inventory> _inventories;
         public ObservableCollection<Inventory> Inventories
