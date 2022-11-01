@@ -117,6 +117,11 @@
     <Compile Include="Messages\OpenInventoryMessage.cs" />
     <Compile Include="Messages\OpenInvoiceIndexMessage.cs" />
     <Compile Include="Messages\OpenInvoiceMessage.cs" />
+    <Compile Include="Messages\OpenInvoiceReportMessage.cs" />
+    <Compile Include="ReportsWindow.xaml.cs">
+      <DependentUpon>ReportsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\InvoiceReport.cs" />
     <Compile Include="ViewModel\InventoryEditViewModel.cs" />
     <Compile Include="ViewModel\InventoryEditViewModelBuilder.cs" />
     <Compile Include="ViewModel\InventoryIndexViewModel.cs" />
@@ -156,6 +161,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ReportsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -178,6 +187,7 @@
     <EmbeddedResource Include="Reports\InvoiceReport.rdlc" />
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BoltsAndPrices.Ui.Wpf.Reports.InvoiceReportModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

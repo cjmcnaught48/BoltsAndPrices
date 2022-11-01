@@ -71,7 +71,7 @@
         
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Margin="2" Command="{Binding SaveInvoiceCommand}">Save</Button>
-            <Button Margin="2">Close</Button>
+            <Button Margin="2" Command="{Binding ReportCommand}">Report</Button>
         </StackPanel>
     </Grid>
 </Window>

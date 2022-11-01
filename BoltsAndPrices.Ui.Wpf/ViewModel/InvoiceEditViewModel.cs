@@ -87,6 +87,15 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
         {
             SaveInvoice();
         });
+        public RelayCommand ReportCommand => new RelayCommand(() =>
+        {
+            Report();
+        });
+
+        private void Report()
+        {
+            Messenger.Default.Send(new OpenInvoiceReportMessage(this.InvoiceId.Value));
+        }
 
         //
         public RelayCommand NewInvoiceInventoryCommand => new RelayCommand(() =>
