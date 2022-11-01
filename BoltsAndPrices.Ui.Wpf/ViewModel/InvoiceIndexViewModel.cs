@@ -23,7 +23,16 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
             _unitOfWorkFactory = unitOfWorkFactory;
 
             Invoices = new ObservableCollection<Invoice>(GetInvoices());
+
+            Messenger.Default.Register<InvoiceUpdatedMessage>(this, InvoiceUpdated);
+
         }
+
+        private void InvoiceUpdated(InvoiceUpdatedMessage message)
+        {
+            Invoices = new ObservableCollection<Invoice>(GetInvoices());
+        }
+
 
         private ObservableCollection<Invoice> _invoices;
         public ObservableCollection<Invoice> Invoices

@@ -127,6 +127,8 @@ namespace BoltsAndPrices.Ui.Wpf.ViewModel
                     Status = true;
                     StatusDescription = "Saved.";
 
+                    Messenger.Default.Send(new InvoiceUpdatedMessage());
+
                 }
                 catch (Exception e)
                 {

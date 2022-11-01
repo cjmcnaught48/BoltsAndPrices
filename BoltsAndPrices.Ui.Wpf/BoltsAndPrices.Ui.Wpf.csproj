@@ -113,6 +113,7 @@
     <Compile Include="Messages\AddInventoryMessage.cs" />
     <Compile Include="Messages\AddInvoiceMessage.cs" />
     <Compile Include="Messages\InventoryUpdatedMessage.cs" />
+    <Compile Include="Messages\InvoiceUpdatedMessage.cs" />
     <Compile Include="Messages\OpenInventoryMessage.cs" />
     <Compile Include="Messages\OpenInvoiceIndexMessage.cs" />
     <Compile Include="Messages\OpenInvoiceMessage.cs" />
